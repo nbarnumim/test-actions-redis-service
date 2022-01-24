@@ -30,6 +30,8 @@ jobs:
           docker network ls
           docker ps
           docker build \
-              --network host \
+              --build-arg REDIS_HOST=redis \
+              --build-arg REDIS_PORT=6379 \
+              --network ${{ job.services.redis.network }} \
               -t test-actions-redis-service:latest \
               .
