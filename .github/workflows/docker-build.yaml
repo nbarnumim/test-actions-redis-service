@@ -27,6 +27,8 @@ jobs:
 
       - name: Build Docker image
         run: |
+          docker network ls
+          docker ps
           docker build \
               --network host \
               -t test-actions-redis-service:latest \
