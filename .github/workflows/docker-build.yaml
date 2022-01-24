@@ -28,7 +28,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-              -e REDIS_HOST=redis \
-              -e REDIS_PORT=6379 \
+              --build-arg REDIS_HOST=redis \
+              --build-arg REDIS_PORT=6379 \
               -t test-actions-redis-service:latest \
               .

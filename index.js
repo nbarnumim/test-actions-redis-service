@@ -1,9 +1,10 @@
 const redis = require('redis');
 
+const redisUrl = `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`;
+
 (async () => {
   const client = redis.createClient({
-      host: process.env.REDIS_HOST,
-      port: process.env.REDIS_PORT
+      url: redisUrl
   });
 
   client.on('error', (err) => {
@@ -11,7 +12,7 @@ const redis = require('redis');
         process.exit(1);
   });
 
-  console.log("connecting...");
+  console.log(`connecting to ${redisUrl}...`);
   await client.connect();
 
   console.log("setting key=value...");
