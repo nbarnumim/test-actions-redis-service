@@ -1,0 +1,34 @@
+name: Docker Build
+
+on: push
+
+jobs:
+  # Label of the container job
+  build:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+
+    services:
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: |
+          docker build \
+              -e REDIS_HOST=redis \
+              -e REDIS_PORT=6379 \
+              -t test-actions-redis-service:latest \
+              .

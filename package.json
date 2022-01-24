@@ -1,0 +1,23 @@
+{
+  "name": "test-actions-redis-service",
+  "version": "1.0.0",
+  "description": "Test GitHub Actions with a Redis service container during a Docker build",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbarnumim/test-actions-redis-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nbarnumim/test-actions-redis-service/issues"
+  },
+  "homepage": "https://github.com/nbarnumim/test-actions-redis-service#readme",
+  "dependencies": {
+    "redis": "^4.0.2"
+  }
+}
